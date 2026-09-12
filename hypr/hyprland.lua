@@ -70,7 +70,7 @@ hl.config({
             active_border = {
                 colors = {
                     "rgba(33ccffee)",
-          "rgba(00ff99ee)"
+                    "rgba(00ff99ee)"
                 },
                 angle = 45,
             },
@@ -80,8 +80,6 @@ hl.config({
 
         resize_on_border = false,
         allow_tearing    = false,
-
-        -- Niri-style horizontal window tape
         layout = "scrolling",
     },
 
@@ -101,9 +99,9 @@ hl.config({
 
         blur = {
             enabled   = true,
-          size      = 3,
-          passes    = 1,
-          vibrancy  = 0.1696,
+            size      = 3,
+            passes    = 1,
+            vibrancy  = 0.1696,
         },
     },
 
@@ -119,39 +117,21 @@ hl.config({
 
 hl.config({
     scrolling = {
-        -- One column fills the whole monitor
         fullscreen_on_one_column = true,
-
-        -- Default width of each column
-        -- 1.0 = one full screen
         column_width = 1.0,
-
-        -- 0 = center focused column
         focus_fit_method = 0,
-
-        -- Automatically move the tape to focused window
         follow_focus = true,
-
-        -- Focus follows once at least 40% is visible
         follow_min_visible = 0.4,
-
-        -- Do not wrap first -> last
         wrap_focus = false,
-
-        -- Do not wrap when swapping columns
         wrap_swapcol = false,
-
-        -- Horizontal tape
         direction = "right",
-
-        -- Width presets for colresize +conf / -conf
         explicit_column_widths = "0.333, 0.5, 0.667, 1.0",
     },
 })
 
 
 -----------------------
----- XWAYLAND ----
+---- XWAYLAND --------
 -----------------------
 
 hl.config({
@@ -162,7 +142,7 @@ hl.config({
 
 
 -----------------------
----- ANIMATIONS ----
+---- ANIMATIONS -------
 -----------------------
 
 hl.curve(
@@ -231,6 +211,7 @@ hl.curve(
 )
 
 
+-- Global
 hl.animation({
     leaf = "global",
     enabled = true,
@@ -238,68 +219,86 @@ hl.animation({
     bezier = "default",
 })
 
+
+-- Border
 hl.animation({
     leaf = "border",
     enabled = true,
-    speed = 5.39,
+    speed = 7,
     bezier = "easeOutQuint",
 })
 
+
+-- Window movement
+--
+-- Fast and direct instead of slow spring movement.
 hl.animation({
     leaf = "windows",
     enabled = true,
-    speed = 4.79,
-    spring = "easy",
+    speed = 8,
+    bezier = "easeOutQuint",
 })
 
+
+-- Window opening
 hl.animation({
     leaf = "windowsIn",
     enabled = true,
-    speed = 4.1,
-    spring = "easy",
+    speed = 6,
+    bezier = "easeOutQuint",
     style = "popin 87%",
 })
 
+
+-- Window closing
 hl.animation({
     leaf = "windowsOut",
     enabled = true,
-    speed = 1.49,
+    speed = 5,
     bezier = "linear",
     style = "popin 87%",
 })
 
+
+-- Fade in
 hl.animation({
     leaf = "fadeIn",
     enabled = true,
-    speed = 1.73,
+    speed = 3,
     bezier = "almostLinear",
 })
 
+
+-- Fade out
 hl.animation({
     leaf = "fadeOut",
     enabled = true,
-    speed = 1.46,
+    speed = 2.5,
     bezier = "almostLinear",
 })
 
+
+-- General fade
 hl.animation({
     leaf = "fade",
     enabled = true,
-    speed = 3.03,
+    speed = 5,
     bezier = "quick",
 })
 
+
+-- Layers
 hl.animation({
     leaf = "layers",
     enabled = true,
-    speed = 3.81,
+    speed = 5,
     bezier = "easeOutQuint",
 })
 
 hl.animation({
     leaf = "layersIn",
     enabled = true,
-    speed = 4,
+    speed = 5,
     bezier = "easeOutQuint",
     style = "fade",
 })
@@ -307,7 +306,7 @@ hl.animation({
 hl.animation({
     leaf = "layersOut",
     enabled = true,
-    speed = 1.5,
+    speed = 4,
     bezier = "linear",
     style = "fade",
 })
@@ -315,21 +314,23 @@ hl.animation({
 hl.animation({
     leaf = "fadeLayersIn",
     enabled = true,
-    speed = 1.79,
+    speed = 3,
     bezier = "almostLinear",
 })
 
 hl.animation({
     leaf = "fadeLayersOut",
     enabled = true,
-    speed = 1.39,
+    speed = 3,
     bezier = "almostLinear",
 })
 
+
+-- Workspaces
 hl.animation({
     leaf = "workspaces",
     enabled = true,
-    speed = 1.94,
+    speed = 3,
     bezier = "almostLinear",
     style = "fade",
 })
@@ -337,7 +338,7 @@ hl.animation({
 hl.animation({
     leaf = "workspacesIn",
     enabled = true,
-    speed = 1.21,
+    speed = 3,
     bezier = "almostLinear",
     style = "fade",
 })
@@ -345,15 +346,17 @@ hl.animation({
 hl.animation({
     leaf = "workspacesOut",
     enabled = true,
-    speed = 1.94,
+    speed = 3,
     bezier = "almostLinear",
     style = "fade",
 })
 
+
+-- Zoom
 hl.animation({
     leaf = "zoomFactor",
     enabled = true,
-    speed = 7,
+    speed = 8,
     bezier = "quick",
 })
 
@@ -365,8 +368,8 @@ hl.animation({
 hl.config({
     misc = {
         force_default_wallpaper = 0,
-        disable_hyprland_logo   = true,
-        vrr = 1,
+            disable_hyprland_logo   = true,
+            vrr                     = 1,
     },
 })
 
@@ -494,24 +497,17 @@ hl.bind(
     hl.dsp.window.fullscreen()
 )
 
--- Kept from your original config
-hl.bind(
-    mainMod .. " + J",
-    hl.dsp.layout("togglesplit")
-)
-
-
 --------------------------------------
 ---- SCROLLING WINDOW NAVIGATION ----
 --------------------------------------
 
--- Previous window in the horizontal tape
+-- SUPER + LEFT = previous window
 hl.bind(
     mainMod .. " + left",
     hl.dsp.layout("focus l")
 )
 
--- Next window in the horizontal tape
+-- SUPER + RIGHT = next window
 hl.bind(
     mainMod .. " + right",
     hl.dsp.layout("focus r")
@@ -522,13 +518,13 @@ hl.bind(
 ---- SCROLLING WINDOW REORDER ----
 ---------------------------------
 
--- Move current column left
+-- SUPER + CTRL + LEFT
 hl.bind(
     mainMod .. " + CTRL + left",
     hl.dsp.layout("swapcol l")
 )
 
--- Move current column right
+-- SUPER + CTRL + RIGHT
 hl.bind(
     mainMod .. " + CTRL + right",
     hl.dsp.layout("swapcol r")
@@ -539,12 +535,13 @@ hl.bind(
 ---- MANUAL TAPE MOVEMENT -------
 ---------------------------------
 
--- Move the layout by one column
+-- SUPER + ALT + LEFT
 hl.bind(
     mainMod .. " + ALT + left",
     hl.dsp.layout("move -col")
 )
 
+-- SUPER + ALT + RIGHT
 hl.bind(
     mainMod .. " + ALT + right",
     hl.dsp.layout("move +col")
@@ -555,16 +552,10 @@ hl.bind(
 ---- CENTER / FIT CURRENT -------
 ---------------------------------
 
--- Fit current column completely into view
+-- SUPER + SPACE
 hl.bind(
     mainMod .. " + SPACE",
     hl.dsp.layout("fit_into_view")
-)
-
--- Explicitly center current column
-hl.bind(
-    mainMod .. " + SHIFT + SPACE",
-    hl.dsp.layout("center")
 )
 
 
@@ -572,25 +563,43 @@ hl.bind(
 ---- COLUMN WIDTH --------------
 ---------------------------------
 
--- Cycle to previous configured width
+-- Previous configured width
 hl.bind(
     mainMod .. " + CTRL + SHIFT + left",
     hl.dsp.layout("colresize -conf")
 )
 
--- Cycle to next configured width
+-- Next configured width
 hl.bind(
     mainMod .. " + CTRL + SHIFT + right",
     hl.dsp.layout("colresize +conf")
 )
 
 
----------------------------------
----- WORKSPACES 1-9 ------------
----------------------------------
+--------------------------------------
+---- SUPER + SHIFT + MOUSE WHEEL ----
+--------------------------------------
+
+-- Next window
+hl.bind(
+    mainMod .. " + SHIFT + mouse_down",
+    hl.dsp.layout("focus r")
+)
+
+-- Previous window
+hl.bind(
+    mainMod .. " + SHIFT + mouse_up",
+    hl.dsp.layout("focus l")
+)
+
+
+---------------------
+---- WORKSPACES ----
+---------------------
 
 for i = 1, 9 do
 
+    -- SUPER + 1..9
     hl.bind(
         mainMod .. " + " .. i,
         hl.dsp.focus({
@@ -598,6 +607,8 @@ for i = 1, 9 do
         })
     )
 
+    -- SUPER + SHIFT + 1..9
+    -- Move current window
     hl.bind(
         mainMod .. " + SHIFT + " .. i,
         hl.dsp.window.move({
@@ -627,6 +638,17 @@ for i = 1, 9 do
                 mouse = true,
             }
     )
+
+
+    ----------------------------------
+    ---- SCROLL EVENT DELAY ----------
+    ----------------------------------
+
+    hl.config({
+        binds = {
+            scroll_event_delay = 75,
+        },
+    })
 
 
     ----------------------------------
@@ -688,11 +710,6 @@ for i = 1, 9 do
         hl.dsp.exec_cmd("noctalia msg screenshot-region")
     )
 
-    --------------------------------
-    ---- WINDOWS AND WORKSPACES ----
-    --------------------------------
-
-
     -------------------------------
     ---- SUPPRESS MAXIMIZE --------
     -------------------------------
@@ -737,5 +754,8 @@ for i = 1, 9 do
         float = true,
     })
 
--- For Noctalia Color templates
-require("noctalia").apply_theme()
+    --------------------------
+    ---- NOCTALIA THEME -------
+    --------------------------
+
+    require("noctalia").apply_theme()

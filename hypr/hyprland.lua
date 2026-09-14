@@ -195,7 +195,7 @@ hl.bind(mainMod .. " + A",         hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B",         hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + K",         hl.dsp.exec_cmd(editor))
 hl.bind(mainMod .. " + M",         hl.dsp.exec_cmd("pavucontrol"))
-hl.bind(mainMod .. " + P",         hl.dsp.exec_cmd("dms ipc call notepad toggle"))
+hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd("noctalia msg panel-toggle session"))
 hl.bind(mainMod .. " + L",         hl.dsp.exec_cmd("noctalia msg session lock"))
 hl.bind(mainMod .. " + X",         hl.dsp.exec_cmd("noctalia msg panel-toggle wallpaper"))
 

@@ -1,6 +1,3 @@
-include "noctalia.kdl"
-
-
 // --- Input Devices ---
 input {
     keyboard {
@@ -161,10 +158,9 @@ binds {
     Mod+Return { spawn "foot"; }
     Mod+D { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+M { spawn "pavucontrol"; }
-    Mod+Shift+B { spawn "firefox"; }
+    Mod+B { spawn "helium-browser"; }
     Mod+Shift+Q { spawn-sh "noctalia msg panel-toggle session"; }
-    Mod+P {spawn "dms" "ipc" "call" "notepad" "toggle"; }
-    Mod+A { spawn "nautilus"; }
+    Mod+A { spawn "nemo"; }
     Super+L { spawn-sh "noctalia msg session lock"; }
     Mod+K { spawn "kate" "/home/xdenotte/.config/niri/config.kdl"; }
     Mod+X { spawn-sh "noctalia msg panel-toggle wallpaper"; }
@@ -298,3 +294,5 @@ binds {
     Ctrl+Alt+Delete { quit; }
     Mod+Shift+P { power-off-monitors; }
 }
+
+include "noctalia.kdl"

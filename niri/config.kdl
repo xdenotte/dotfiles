@@ -158,9 +158,9 @@ binds {
     Mod+Return { spawn "foot"; }
     Mod+D { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+M { spawn "pavucontrol"; }
-    Mod+B { spawn "helium-browser"; }
+    Mod+B { spawn "firefox"; }
     Mod+Shift+Q { spawn-sh "noctalia msg panel-toggle session"; }
-    Mod+A { spawn "nemo"; }
+    Mod+A { spawn "nautilus"; }
     Super+L { spawn-sh "noctalia msg session lock"; }
     Mod+K { spawn "kate" "/home/xdenotte/.config/niri/config.kdl"; }
     Mod+X { spawn-sh "noctalia msg panel-toggle wallpaper"; }
